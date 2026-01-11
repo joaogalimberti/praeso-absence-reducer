@@ -1,43 +1,74 @@
-/* Header */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
-  transition: var(--transition);
+/* Variáveis para suporte ao Glassmorphism */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --header-height: 80px;
 }
 
+.header {
+  position: fixed;
+  /* Já começa suspenso e centralizado */
+  top: 20px; 
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 95%; /* Ocupa quase toda a largura em telas pequenas */
+  max-width: 1200px; /* Limite em telas grandes */
+  height: var(--header-height);
+  z-index: 1000;
+  
+  display: flex;
+  align-items: center;
+  
+  /* Glassmorphism desde o início */
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  
+  /* Borda arredondada (Pill shape) */
+  border-radius: 100px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 10px;
+}
+
+/* Alterações leves ao scrollar */
 .header.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid var(--border-light);
-  box-shadow: var(--shadow-sm);
+  top: 10px; /* Encosta um pouco mais no topo ou mantém, conforme preferir */
+  height: 65px; /* Fica mais elegante e fino */
+  max-width: 1100px; /* Estreita levemente para dar dinamismo */
+  background: rgba(255, 255, 255, 0.85); /* Fica um pouco mais sólido para leitura */
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 1px 8px rgba(0, 0, 0, 0.03);
+}
+
+.container {
+  width: 100%;
+  padding: 0 30px; /* Padding interno para o conteúdo não colar na borda da cápsula */
 }
 
 .header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  width: 100%;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 20px;
+/* Logo */
+.logo-text {
+  font-size: 22px;
   color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
-.logo-icon {
-  font-size: 28px;
+.header.scrolled .logo-text {
+  font-size: 19px;
 }
 
+/* Navegação */
 .nav {
   display: flex;
   align-items: center;
@@ -48,79 +79,23 @@
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
-  font-size: 15px;
-  transition: var(--transition);
+  font-size: 14px;
+  transition: color 0.3s ease;
 }
 
 .nav a:hover {
   color: var(--primary);
 }
 
-/* Buttons */
-.btn-primary,
-.btn-secondary,
-.btn-outline {
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 15px;
-  cursor: pointer;
-  transition: var(--transition);
-  border: none;
-  font-family: var(--font-body);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
+/* Botão do Header */
 .btn-primary {
-  background: var(--primary);
-  color: white;
+  padding: 10px 24px;
+  font-size: 14px;
+  border-radius: 50px; /* Botão também arredondado para combinar */
+  transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-}
-
-.btn-secondary:hover {
-  background: var(--bg-secondary);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-}
-
-.btn-outline:hover {
-  background: var(--primary);
-  color: white;
-}
-
-.btn-large {
-  padding: 16px 32px;
-  font-size: 16px;
-  border-radius: 12px;
-}
-
-.btn-full {
-  width: 100%;
-  justify-content: center;
-}
-
-.btn-arrow {
-  font-size: 20px;
-  transition: transform 0.3s ease;
-}
-
-.btn-primary:hover .btn-arrow {
-  transform: translateX(4px);
+.header.scrolled .btn-primary {
+  padding: 8px 20px;
+  font-size: 13.5px;
 }

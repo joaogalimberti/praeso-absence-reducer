@@ -7,7 +7,6 @@ import BeforeAfter from './BeforeAfter/BeforeAfter';
 import Features from './Features/Features';
 import HowItWorks from './HowItWorks/HowItWorks';
 import DashboardPreview from './DashboardPreview/DashboardPreview';
-import MobileView from './MobileView/MobileView';
 import Automation from './Automation/Automation';
 import Testimonials from './Testimonials/Testimonials';
 import CTA from './CTA/CTA';
@@ -22,7 +21,6 @@ import './BeforeAfter/BeforeAfter.css';
 import './Features/Features.css';
 import './HowItWorks/HowItWorks.css';
 import './DashboardPreview/DashboardPreview.css';
-import './MobileView/MobileView.css';
 import './Automation/Automation.css';
 import './Testimonials/Testimonials.css';
 import './CTA/CTA.css';
@@ -54,7 +52,6 @@ const LandingPage = () => {
         
         {/* Demonstração do Produto */}
         <DashboardPreview />
-        <MobileView />
         <Automation />
         
         {/* Prova Social (Depoimentos) */}

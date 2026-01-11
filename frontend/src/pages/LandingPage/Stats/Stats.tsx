@@ -1,53 +1,100 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+const StatCard = ({ number, suffix, label, description, delay, isVisible }: any) => {
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    if (isVisible) {
+      let start = 0;
+      const end = parseInt(number.replace(/\D/g, ''));
+      const duration = 2000; // 2 segundos de animação
+      const increment = end / (duration / 16);
+      
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= end) {
+          setCount(end);
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(start));
+        }
+      }, 16);
+      return () => clearInterval(timer);
+    }
+  }, [isVisible, number]);
+
+  return (
+    <div 
+      className={`stat-card ${isVisible ? 'visible' : ''}`} 
+      style={{ transitionDelay: delay }}
+    >
+      <div className="stat-glow"></div>
+      <div className="stat-number">
+        {number.includes('R$') ? `R$ ${count.toLocaleString()}` : `${count}${suffix || ''}`}
+      </div>
+      <div className="stat-label">{label}</div>
+      <div className="stat-description">{description}</div>
+      <div className="stat-progress-bar">
+        <div className="progress-fill" style={{ width: isVisible ? '100%' : '0%' }}></div>
+      </div>
+    </div>
+  );
+};
 
 const Stats = () => {
   const [statsVisible, setStatsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const statsSection = document.getElementById('stats');
-      if (statsSection) {
-        const rect = statsSection.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8) {
-          setStatsVisible(true);
-        }
-      }
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setStatsVisible(true);
+      },
+      { threshold: 0.3 }
+    );
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="stats" className="stats-section">
+    <section id="stats" ref={sectionRef} className="stats-section">
+      <div className="stats-bg-decoration"></div>
       <div className="container">
-        <h2 className="section-title center">Resultados da Previsibilidade</h2>
-        <p className="section-subtitle center">Como a PRAESO impacta a eficiência operacional da sua agenda.</p>
+        <div className="stats-header">
+          <h2 className="section-title center">A Prova da Previsibilidade</h2>
+          <p className="section-subtitle center">Dados reais que consolidam a autoridade da PRAESO no mercado.</p>
+        </div>
         
         <div className="stats-grid">
-          <div className={`stat-card ${statsVisible ? 'visible' : ''}`} style={{animationDelay: '0.1s'}}>
-            <div className="stat-number">70%</div>
-            <div className="stat-label">Redução de Ausências</div>
-            <div className="stat-description">Menos ociosidade desde o primeiro mês</div>
-          </div>
-          
-          <div className={`stat-card ${statsVisible ? 'visible' : ''}`} style={{animationDelay: '0.2s'}}>
-            <div className="stat-number">R$ 2.400</div>
-            <div className="stat-label">Receita Protegida</div>
-            <div className="stat-description">Média mensal recuperada por profissional</div>
-          </div>
-          
-          <div className={`stat-card ${statsVisible ? 'visible' : ''}`} style={{animationDelay: '0.3s'}}>
-            <div className="stat-number">95%</div>
-            <div className="stat-label">Taxa de Consciência</div>
-            <div className="stat-description">Compromissos confirmados e validados</div>
-          </div>
-          
-          <div className={`stat-card ${statsVisible ? 'visible' : ''}`} style={{animationDelay: '0.4s'}}>
-            <div className="stat-number">05 min</div>
-            <div className="stat-label">Implementação</div>
-            <div className="stat-description">Configuração do protocolo de presença</div>
-          </div>
+          <StatCard 
+            number="70" suffix="%" 
+            label="Redução de Ausências" 
+            description="Recupere o controle da sua grade horária." 
+            delay="0.1s" 
+            isVisible={statsVisible} 
+          />
+          <StatCard 
+            number="2400" suffix="" 
+            label="Receita Protegida" 
+            description="Média mensal recuperada por profissional." 
+            delay="0.2s" 
+            isVisible={statsVisible} 
+          />
+          <StatCard 
+            number="95" suffix="%" 
+            label="Taxa de Consciência" 
+            description="Compromissos validados pelo protocolo." 
+            delay="0.3s" 
+            isVisible={statsVisible} 
+          />
+          <StatCard 
+            number="05" suffix=" min" 
+            label="Implementação" 
+            description="Tempo para ativar sua nova gestão." 
+            delay="0.4s" 
+            isVisible={statsVisible} 
+          />
         </div>
       </div>
     </section>

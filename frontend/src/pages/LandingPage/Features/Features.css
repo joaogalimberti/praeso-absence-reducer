@@ -1,57 +1,142 @@
-/* Features Section */
 .features-section {
-  padding: var(--section-padding) 0;
-  background: white;
+  padding: 120px 0;
+  background: #ffffff;
+  position: relative;
 }
 
-.section-header {
+.features-header {
   text-align: center;
-  margin-bottom: 80px;
+  max-width: 800px;
+  margin: 0 auto 80px;
 }
 
-.section-subtitle {
-  font-size: 20px;
-  color: var(--text-secondary);
-  margin-top: 16px;
+.features-tag {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
 }
 
+.highlight-blue {
+  color: var(--primary);
+  position: relative;
+}
+
+/* Grid de 3 colunas impecável */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 30px;
 }
 
 .feature-card {
-  padding: 40px 32px;
-  background: var(--bg-secondary);
-  border-radius: 16px;
-  border: 2px solid var(--border-light);
-  transition: var(--transition);
-  opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
+  position: relative;
+  background: #f8fafc;
+  border-radius: 24px;
+  padding: 40px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Efeito de elevação e brilho no hover */
 .feature-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
+  background: #ffffff;
   border-color: var(--primary);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 30px 60px rgba(79, 70, 229, 0.1);
 }
 
-.feature-icon {
-  font-size: 48px;
-  margin-bottom: 24px;
-  display: block;
+.feature-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.feature-title {
+.feature-number {
   font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 800;
+  color: #94a3b8;
+  background: #edf2f7;
+  padding: 4px 12px;
+  border-radius: 100px;
+  transition: all 0.3s ease;
 }
 
-.feature-description {
-  color: var(--text-secondary);
+.feature-card:hover .feature-number {
+  background: var(--primary);
+  color: white;
+}
+
+.feature-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-status-dot {
+  background: #10b981; /* Verde para indicar "Ativo/Funcional" */
+  box-shadow: 0 0 10px #10b981;
+}
+
+.feature-card h3 {
+  font-size: 22px;
+  color: #0f172a;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.feature-card p {
+  color: #64748b;
+  font-size: 15px;
   line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Indicador de progresso que anima no hover */
+.feature-indicator {
+  position: relative;
+  height: 2px;
+  background: #e2e8f0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.indicator-line {
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  transition: left 0.6s ease;
+}
+
+.feature-card:hover .indicator-line {
+  left: 100%;
+  transition: left 1s infinite linear;
+}
+
+/* Glassmorphism sutil por trás do texto */
+.card-glass-overlay {
+  position: absolute;
+  top: 0; right: 0;
+  width: 100px; height: 100px;
+  background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.03), transparent);
+  pointer-events: none;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .features-grid { grid-template-columns: 1fr; }
 }

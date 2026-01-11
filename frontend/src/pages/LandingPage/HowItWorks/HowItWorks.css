@@ -1,68 +1,149 @@
-/* How It Works */
-.how-it-works-section {
-  padding: var(--section-padding) 0;
-  background: var(--bg-secondary);
+.how-section {
+  padding: 120px 0;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
 }
 
-.steps {
+.steps-container {
+  position: relative;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+/* Linha central que conecta os passos */
+.steps-path {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, #e2e8f0 10%, #e2e8f0 90%, transparent);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.step-item {
   display: grid;
-  gap: 64px;
-  margin-top: 80px;
+  grid-template-columns: 1fr 120px 1fr; /* Lado A | Marcador | Lado B */
+  align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
-.step {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 40px;
-  align-items: start;
+.step-reverse {
+  direction: ltr; /* Garante que o texto não inverta */
 }
 
-.step:nth-child(even) {
-  direction: rtl;
+/* Marcador central (O Círculo) */
+.step-marker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.step:nth-child(even) > * {
-  direction: ltr;
-}
-
-.step-number {
-  width: 80px;
-  height: 80px;
-  background: var(--primary);
-  color: white;
+.step-dot {
+  width: 56px;
+  height: 56px;
+  background: white;
+  border: 2px solid var(--primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-display);
-  font-size: 36px;
-  font-weight: 800;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 0 20px rgba(79, 70, 229, 0.15);
+  position: relative;
+  background: white;
+  z-index: 3;
 }
 
-.step-content {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: var(--shadow-md);
+.step-number-text {
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 14px;
+}
+
+/* Conteúdo do Texto */
+.step-info {
+  padding: 0 40px;
 }
 
 .step-title {
-  font-family: var(--font-display);
   font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--text-primary);
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 15px;
 }
 
 .step-description {
-  color: var(--text-secondary);
-  margin-bottom: 24px;
   font-size: 16px;
+  color: #64748b;
+  line-height: 1.6;
 }
 
-.step-image {
+/* Visual (Imagens e Cards) */
+.step-visual {
+  display: flex;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+.step-image-card {
+  position: relative;
   width: 100%;
-  border-radius: 12px;
-  box-shadow: var(--shadow-md);
+  max-width: 440px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  transition: transform 0.5s ease;
+}
+
+.step-image-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.step-image-card:hover {
+  transform: scale(1.02) translateY(-5px);
+}
+
+.step-image-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Badge de Glassmorphism sobre a imagem */
+.step-glass-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+}
+
+/* Alternância de Lados */
+.step-item:nth-child(even) .step-visual { order: 3; }
+.step-item:nth-child(even) .step-info { order: 1; text-align: right; }
+.step-item:nth-child(odd) .step-info { order: 3; }
+
+/* Responsividade */
+@media (max-width: 968px) {
+  .steps-path { left: 30px; transform: none; }
+  .step-item {
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+  }
+  .step-marker { justify-content: flex-start; }
+  .step-info, .step-visual { order: 2 !important; text-align: left !important; padding: 0; }
+  .step-item:nth-child(even) .step-visual { order: 2; }
+  .step-visual { margin-top: 20px; }
 }

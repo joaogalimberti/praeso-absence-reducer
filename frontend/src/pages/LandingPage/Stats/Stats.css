@@ -1,25 +1,45 @@
-/* Stats Section */
 .stats-section {
-  padding: var(--section-padding) 0;
-  background: white;
+  padding: 120px 0;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decoração de fundo para tirar o "branco chapado" */
+.stats-bg-decoration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(79, 70, 229, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.stats-header {
+  margin-bottom: 60px;
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  margin-top: 64px;
+  gap: 25px;
 }
 
+/* O Card com Glassmorphism Dinâmico */
 .stat-card {
-  text-align: center;
-  padding: 40px 24px;
-  background: var(--bg-secondary);
-  border-radius: 16px;
-  border: 2px solid var(--border-light);
+  position: relative;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  padding: 40px 30px;
+  border-radius: 24px;
+  text-align: left; /* Alinhamento à esquerda passa mais seriedade */
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
 }
 
 .stat-card.visible {
@@ -27,22 +47,69 @@
   transform: translateY(0);
 }
 
+/* Efeito de brilho interno ao passar o mouse */
+.stat-glow {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(79, 70, 229, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+  background: white;
+  border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.08);
+}
+
+.stat-card:hover .stat-glow {
+  opacity: 1;
+}
+
 .stat-number {
-  font-family: var(--font-display);
-  font-size: 56px;
+  font-size: 52px;
   font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 8px;
+  color: #0f172a;
+  letter-spacing: -2px;
+  margin-bottom: 10px;
+  display: block;
 }
 
 .stat-label {
   font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
 }
 
 .stat-description {
   font-size: 14px;
-  color: var(--text-muted);
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Barra de progresso sutil no pé do card */
+.stat-progress-bar {
+  margin-top: 25px;
+  width: 100%;
+  height: 4px;
+  background: #f1f5f9;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--primary);
+  transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .stats-grid { grid-template-columns: 1fr; }
 }

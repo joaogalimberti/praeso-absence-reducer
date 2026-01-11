@@ -1,73 +1,148 @@
-/* Before vs After */
 .before-after-section {
-  padding: var(--section-padding) 0;
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, white 100%);
+  padding: 120px 0;
+  background: #fdfdfe;
+  position: relative;
+}
+
+.ba-wrapper {
+  position: relative;
+  margin-top: 80px;
+}
+
+/* O Badge de VS central */
+.ba-vs-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: #1e293b;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 14px;
+  z-index: 10;
+  border: 4px solid #fdfdfe;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .before-after-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-top: 64px;
+  gap: 0; /* Colados para o VS brilhar no meio */
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.05);
 }
 
-.before-card,
+.ba-card {
+  padding: 60px;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+/* Estilo do Lado "Antes" (Mais opaco) */
+.before-card {
+  background: #f8fafc;
+  border-right: 1px solid #e2e8f0;
+}
+
+.before-card .ba-label {
+  color: #94a3b8;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.before-card h3 { color: #64748b; font-size: 32px; margin-top: 10px; }
+
+/* Estilo do Lado "Depois" (Vibrante) */
 .after-card {
   background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  transition: var(--transition);
+  z-index: 1;
 }
 
-.before-card:hover,
-.after-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-}
-
-.ba-header {
-  padding: 32px;
-  text-align: center;
-}
-
-.ba-header.before {
-  background: rgba(239, 68, 68, 0.1);
-}
-
-.ba-header.after {
-  background: rgba(16, 185, 129, 0.1);
-}
-
-.ba-icon {
-  font-size: 48px;
-  display: block;
-  margin-bottom: 16px;
-}
-
-.ba-header h3 {
-  font-family: var(--font-display);
-  font-size: 24px;
+.after-card .ba-label.highlight {
+  color: var(--primary);
   font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
-.ba-image {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
+.after-card h3 { color: #0f172a; font-size: 32px; margin-top: 10px; }
+
+/* Visualização de Caos vs Estabilidade */
+.ba-visual-chaos, .ba-visual-stable {
+  height: 120px;
+  margin: 40px 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
+.chaos-line {
+  height: 40px; width: 4px; background: #e2e8f0; border-radius: 2px;
+  animation: jitter 0.5s infinite alternate;
+}
+.chaos-line:nth-child(2) { height: 80px; animation-delay: 0.2s; }
+.chaos-line:nth-child(3) { height: 60px; animation-delay: 0.4s; }
+
+@keyframes jitter {
+  0% { transform: scaleY(1); opacity: 0.5; }
+  100% { transform: scaleY(1.5); opacity: 0.8; }
+}
+
+.stable-bar {
+  height: 80px; width: 12px; background: var(--primary); border-radius: 6px;
+  transition: all 0.5s ease;
+}
+.after-card:hover .stable-bar { height: 100px; background: #10b981; }
+
+/* Listas */
 .ba-list {
   list-style: none;
-  padding: 32px;
+  margin-top: 40px;
 }
 
 .ba-list li {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border-light);
-  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #475569;
 }
 
-.ba-list li:last-child {
-  border-bottom: none;
+.ba-icon-error { color: #ef4444; font-weight: bold; }
+.ba-icon-success { 
+  color: #10b981; 
+  background: rgba(16, 185, 129, 0.1);
+  width: 24px; height: 24px; 
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+/* Efeito de Brilho no "Depois" */
+.ba-glow {
+  position: absolute;
+  top: 0; right: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.05), transparent);
+  pointer-events: none;
+}
+
+.after-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 968px) {
+  .before-after-grid { grid-template-columns: 1fr; }
+  .ba-vs-badge { top: 50%; left: 50%; }
 }

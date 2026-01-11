@@ -36,19 +36,31 @@ const Features = () => {
     <section id="features" className="features-section">
       <div className="container">
         <div className="features-header">
-          <h2 className="section-title">Engenharia de Presença</h2>
+          <div className="features-tag">Tecnologia & Gestão</div>
+          <h2 className="section-title">Engenharia de <span className="highlight-blue">Presença</span></h2>
           <p className="section-subtitle">
-            Recursos desenhados para transformar sua agenda em um fluxo contínuo de compromissos cumpridos.
+            Recursos desenhados milimetricamente para transformar sua agenda em um fluxo contínuo de compromissos cumpridos.
           </p>
         </div>
         
         <div className="features-grid">
           {featuresData.map((f, index) => (
             <div key={index} className="feature-card">
-              <div className="feature-number">{f.number}</div>
-              <h3>{f.title}</h3>
-              <p>{f.description}</p>
-              <div className="feature-line"></div>
+              <div className="feature-card-content">
+                <div className="feature-top">
+                  <span className="feature-number">{f.number}</span>
+                  <div className="feature-status-dot"></div>
+                </div>
+                <h3>{f.title}</h3>
+                <p>{f.description}</p>
+                
+                {/* Elemento interativo que "acende" no hover */}
+                <div className="feature-indicator">
+                  <div className="indicator-line"></div>
+                  <div className="indicator-glow"></div>
+                </div>
+              </div>
+              <div className="card-glass-overlay"></div>
             </div>
           ))}
         </div>

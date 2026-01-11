@@ -1,47 +1,66 @@
 const HowItWorks = () => {
   const steps = [
     { 
-      n: 1, 
+      n: "01", 
       title: "Registro de Presença", 
-      desc: "Insira os dados básicos do seu cliente. A PRAESO organiza as informações para iniciar o monitoramento.", 
-      img: "/images/step-1-register.png" 
+      tag: "Entrada de Dados",
+      desc: "Insira os dados básicos do seu cliente. A PRAESO organiza as informações para iniciar o monitoramento inteligente.", 
+      img: "/images/step-1.png" 
     },
     { 
-      n: 2, 
+      n: "02", 
       title: "Planejamento de Agenda", 
+      tag: "Organização",
       desc: "Defina os horários com facilidade. Nossa interface oferece clareza absoluta sobre sua grade de compromissos.", 
-      img: "/images/step-2-schedule.png" 
+      img: "/images/step-2.png" 
     },
     { 
-      n: 3, 
+      n: "03", 
       title: "Antecipação Ativa", 
+      tag: "Engajamento",
       desc: "O sistema envia notificações estratégicas em momentos de alta atenção, preparando o cliente para o compromisso.", 
-      img: "/images/step-3-reminder.png" 
+      img: "/images/step-3.png" 
     },
     { 
-      n: 4, 
+      n: "04", 
       title: "Confirmação e Controle", 
-      desc: "O cliente valida a presença com um clique. Sua agenda se atualiza instantaneamente com foco em resultados.", 
-      img: "/images/step-4-confirm.png" 
+      tag: "Resultado",
+      desc: "O cliente valida a presença com um clique. Sua agenda se atualiza instantaneamente com foco em faturamento.", 
+      img: "/images/step-4.png" 
     }
   ];
 
   return (
-    <section id="how-it-works" className="how-it-works-section">
+    <section id="how-it-works" className="how-section">
       <div className="container">
-        <h2 className="section-title center">O Método PRAESO</h2>
-        <p className="section-subtitle center">Simplicidade tecnológica para garantir compromissos que se cumprem.</p>
+        <div className="section-header center">
+          <div className="section-tag">O Método</div>
+          <h2 className="section-title">A Engenharia por trás do <span className="highlight">Fluxo</span></h2>
+          <p className="section-subtitle">Quatro etapas desenhadas para eliminar a ociosidade e profissionalizar sua gestão.</p>
+        </div>
         
-        <div className="steps">
-          {steps.map((step) => (
-            <div key={step.n} className="step">
-              <div className="step-number">{step.n}</div>
-              <div className="step-content">
+        <div className="steps-container">
+          {/* Linha central conectora (visível apenas em desktop) */}
+          <div className="steps-path"></div>
+
+          {steps.map((step, index) => (
+            <div key={step.n} className={`step-item ${index % 2 !== 0 ? 'step-reverse' : ''}`}>
+              <div className="step-visual">
+                <div className="step-image-card">
+                  <img src={step.img} alt={step.title} />
+                  <div className="step-glass-badge">{step.tag}</div>
+                </div>
+              </div>
+
+              <div className="step-marker">
+                <div className="step-dot">
+                  <span className="step-number-text">{step.n}</span>
+                </div>
+              </div>
+
+              <div className="step-info">
                 <h3 className="step-title">{step.title}</h3>
                 <p className="step-description">{step.desc}</p>
-                <div className="step-image-wrapper">
-                  <img src={step.img} alt={step.title} className="step-image" />
-                </div>
               </div>
             </div>
           ))}
