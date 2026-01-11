@@ -2,7 +2,6 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="hero-background">
-        <img src="/images/hero-background.jpg" alt="" className="hero-bg-image" />
         <div className="hero-overlay"></div>
       </div>
       <div className="container">
@@ -25,7 +24,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="hero-image">
-            <img src="/images/hero-dashboard.png" alt="Dashboard" />
+            <img src="/hero-dashboard.png" alt="Dashboard" />
           </div>
         </div>
       </div>

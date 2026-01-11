@@ -9,7 +9,7 @@ const Automation = () => {
         </p>
         
         <div className="automation-visual">
-          <img src="/images/automation-flow.png" alt="Fluxo de automação PRAESO" className="automation-image" />
+          <img src="/automation-flow.png" alt="Fluxo de automação PRAESO" className="automation-image" />
           
           <div className="automation-steps">
             <div className="auto-step auto-step-1">

@@ -4,7 +4,7 @@ const Problem = () => {
       <div className="container">
         <div className="problem-content">
           <div className="problem-image">
-            <img src="/images/problem-illustration.png" alt="O ciclo da incerteza na agenda" />
+            <img src="/problem-illustration.png" alt="O ciclo da incerteza na agenda" />
           </div>
           <div className="problem-text">
             <h2 className="section-title">O ciclo da incerteza</h2>

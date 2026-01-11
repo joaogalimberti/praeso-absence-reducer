@@ -4,9 +4,9 @@ const MobileView = () => {
       <div className="container">
         <div className="mobile-content">
           <div className="mobile-images">
-            <img src="/images/mobile-1.png" alt="Interface PRAESO Mobile - Agenda" className="mobile-phone" />
-            <img src="/images/mobile-2.png" alt="Interface PRAESO Mobile - Protocolos" className="mobile-phone" />
-            <img src="/images/mobile-3.png" alt="Interface PRAESO Mobile - Status" className="mobile-phone" />
+            <img src="/mobile-1.png" alt="Interface PRAESO Mobile - Agenda" className="mobile-phone" />
+            <img src="/mobile-1.png" alt="Interface PRAESO Mobile - Protocolos" className="mobile-phone" />
+            <img src="/mobile-1.png" alt="Interface PRAESO Mobile - Status" className="mobile-phone" />
           </div>
           
           <div className="mobile-text">
