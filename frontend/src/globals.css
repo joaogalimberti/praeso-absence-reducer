@@ -1,72 +1,64 @@
-/* 1. IMPORTS DEVEM VIR ANTES DE TUDO */
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
-@import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  /* Cores HSL (Mantendo o seu Royal Blue) */
-  --background: hsl(0 0% 98%);
-  --foreground: hsl(225 20% 10%);
-  --primary: hsl(225 73% 57%);
-  --primary-foreground: hsl(0 0% 100%);
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(225 20% 10%);
-  --border: hsl(225 15% 90%);
-  --input: hsl(225 15% 88%);
-  --ring: hsl(225 73% 57%);
-  --radius: 0.75rem;
-
-  /* Variáveis de fonte para usar no CSS puro se necessário */
-  --font-sora: "Sora", sans-serif;
-  --font-inter: "Inter", sans-serif;
-}
-
-.dark {
-  --background: hsl(225 20% 4%);
-  --foreground: hsl(225 10% 96%);
-  --primary: hsl(225 85% 65%);
-  --card: hsl(225 20% 7%);
-  --border: hsl(225 15% 15%);
-}
-
-/* 2. CONFIGURAÇÃO DO TEMA NO TAILWIND V4 */
-@theme inline {
-  /* Aqui dizemos ao Tailwind para criar as classes font-sans e font-display */
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-sora);
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-
-  --radius-lg: var(--radius);
-}
-
-/* 3. APLICAÇÃO NA BASE */
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
+  /* Colors - Professional SaaS palette */
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --primary-light: #3b82f6;
+  --secondary: #10b981;
+  --accent: #f59e0b;
+  --danger: #ef4444;
   
-  body {
-    @apply bg-background text-foreground;
-    /* Forçando a fonte Inter no corpo do site */
-    font-family: var(--font-inter);
-    -webkit-font-smoothing: antialiased;
-  }
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  
+  /* Typography */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Spacing */
+  --container-max: 1280px;
+  --section-padding: 120px;
+  
+  /* Effects */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  /* Forçando a fonte Sora em todos os títulos */
-  h1, h2, h3, h4, h5, h6, .font-display {
-    font-family: var(--font-sora);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.landing-page {
+  overflow-x: hidden;
+}
+
+/* Container */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 32px;
 }

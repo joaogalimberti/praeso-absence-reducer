@@ -1,0 +1,96 @@
+/* Problem Section */
+.problem-section {
+  padding: var(--section-padding) 0;
+  background: var(--bg-secondary);
+}
+
+.problem-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.problem-image img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  color: var(--text-primary);
+}
+
+.section-title.center {
+  text-align: center;
+}
+
+.problem-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.problem-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+}
+
+.problem-item-bad {
+  border-color: var(--accent);
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.problem-item-worse {
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.problem-number {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--primary);
+  min-width: 80px;
+}
+
+.problem-icon {
+  font-size: 48px;
+  min-width: 80px;
+}
+
+.problem-desc strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.problem-desc p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.problem-arrow {
+  font-size: 32px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.problem-callout {
+  padding: 20px 24px;
+  background: var(--primary);
+  color: white;
+  border-radius: 12px;
+  font-size: 18px;
+}

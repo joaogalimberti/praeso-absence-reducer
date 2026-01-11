@@ -13,6 +13,21 @@ import Testimonials from './Testimonials/Testimonials';
 import CTA from './CTA/CTA';
 import Footer from './Footer/Footer';
 
+// Importação dos estilos de cada seção
+import './Header/Header.css';
+import './Hero/Hero.css';
+import './Problem/Problem.css';
+import './Stats/Stats.css';
+import './BeforeAfter/BeforeAfter.css';
+import './Features/Features.css';
+import './HowItWorks/HowItWorks.css';
+import './DashboardPreview/DashboardPreview.css';
+import './MobileView/MobileView.css';
+import './Automation/Automation.css';
+import './Testimonials/Testimonials.css';
+import './CTA/CTA.css';
+import './Footer/Footer.css';
+
 const LandingPage = () => {
   return (
     <div className="landing-page">

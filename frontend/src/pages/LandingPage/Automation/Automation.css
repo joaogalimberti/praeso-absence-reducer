@@ -1,0 +1,69 @@
+/* Automation Section */
+.automation-section {
+  padding: var(--section-padding) 0;
+  background: white;
+}
+
+.automation-visual {
+  position: relative;
+  margin-top: 80px;
+  padding: 60px 0;
+}
+
+.automation-image {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 20px;
+  box-shadow: var(--shadow-xl);
+}
+
+.automation-steps {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 60px auto 0;
+  position: relative;
+}
+
+.automation-steps::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  z-index: 0;
+}
+
+.auto-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.auto-icon {
+  width: 80px;
+  height: 80px;
+  background: white;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.auto-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 100px;
+}

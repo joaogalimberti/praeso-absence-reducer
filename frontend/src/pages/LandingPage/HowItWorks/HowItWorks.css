@@ -1,0 +1,68 @@
+/* How It Works */
+.how-it-works-section {
+  padding: var(--section-padding) 0;
+  background: var(--bg-secondary);
+}
+
+.steps {
+  display: grid;
+  gap: 64px;
+  margin-top: 80px;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.step:nth-child(even) {
+  direction: rtl;
+}
+
+.step:nth-child(even) > * {
+  direction: ltr;
+}
+
+.step-number {
+  width: 80px;
+  height: 80px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 800;
+  box-shadow: var(--shadow-lg);
+}
+
+.step-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+.step-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.step-description {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+.step-image {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
