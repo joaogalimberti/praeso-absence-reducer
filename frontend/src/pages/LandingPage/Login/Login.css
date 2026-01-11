@@ -1,0 +1,84 @@
+/* Layout da Página de Login */
+.login-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: #4a5568;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.back-button:hover {
+  color: #2d3748;
+}
+
+.login-content {
+  display: flex;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-width: 1000px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.login-branding {
+  flex: 1;
+  background-color: #4f46e5; /* Use a cor principal da sua marca */
+  padding: 60px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-branding h1 {
+  font-size: 2.5rem;
+  margin: 20px 0;
+  line-height: 1.2;
+}
+
+.login-branding p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.clerk-form-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .login-content {
+    flex-direction: column;
+  }
+  .login-branding {
+    padding: 40px;
+    text-align: center;
+  }
+  .login-branding .logo {
+    justify-content: center;
+  }
+}

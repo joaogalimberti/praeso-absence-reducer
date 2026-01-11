@@ -4,35 +4,39 @@ const MobileView = () => {
       <div className="container">
         <div className="mobile-content">
           <div className="mobile-images">
-            <img src="/images/mobile-1.png" alt="App mobile - agenda" className="mobile-phone" />
-            <img src="/images/mobile-2.png" alt="App mobile - lembretes" className="mobile-phone" />
-            <img src="/images/mobile-3.png" alt="App mobile - confirmações" className="mobile-phone" />
+            <img src="/images/mobile-1.png" alt="Interface PRAESO Mobile - Agenda" className="mobile-phone" />
+            <img src="/images/mobile-2.png" alt="Interface PRAESO Mobile - Protocolos" className="mobile-phone" />
+            <img src="/images/mobile-3.png" alt="Interface PRAESO Mobile - Status" className="mobile-phone" />
           </div>
+          
           <div className="mobile-text">
-            <h2 className="section-title">Sempre no seu bolso</h2>
+            <h2 className="section-title">Controle em movimento</h2>
             <p className="mobile-description">
-              Gerencie sua agenda de qualquer lugar. O app mobile tem todos os recursos da versão desktop em uma interface otimizada para toque.
+              A inteligência da PRAESO acompanha o seu ritmo. Gerencie a previsibilidade da sua agenda de qualquer lugar, com uma interface otimizada para respostas rápidas.
             </p>
+            
             <div className="mobile-features">
               <div className="mobile-feature">
-                <div className="mf-icon">📲</div>
+                <div className="mf-indicator-dot"></div>
                 <div>
-                  <strong>Notificações push</strong>
-                  <p>Receba alertas instantâneos</p>
+                  <strong>Alertas de Presença</strong>
+                  <p>Notificações instantâneas sobre confirmações e reagendamentos.</p>
                 </div>
               </div>
+              
               <div className="mobile-feature">
-                <div className="mf-icon">🔄</div>
+                <div className="mf-indicator-dot"></div>
                 <div>
-                  <strong>Sincronização automática</strong>
-                  <p>Dados sempre atualizados</p>
+                  <strong>Sincronia Absoluta</strong>
+                  <p>Dados atualizados em tempo real entre todos os seus dispositivos.</p>
                 </div>
               </div>
+              
               <div className="mobile-feature">
-                <div className="mf-icon">✨</div>
+                <div className="mf-indicator-dot"></div>
                 <div>
-                  <strong>Interface intuitiva</strong>
-                  <p>Fácil de usar, mesmo em movimento</p>
+                  <strong>Experiência Nativa</strong>
+                  <p>Navegação fluida e intuitiva, desenhada para a máxima eficiência.</p>
                 </div>
               </div>
             </div>
