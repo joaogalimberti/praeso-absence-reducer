@@ -22,11 +22,34 @@ const BeforeAfter = () => {
                   <h3>Gestão Reativa</h3>
                 </div>
                 
+                {/* Visual de agenda caótica */}
                 <div className="ba-visual-chaos">
-                  {/* Representação visual de instabilidade */}
-                  <div className="chaos-line"></div>
-                  <div className="chaos-line"></div>
-                  <div className="chaos-line"></div>
+                  <div className="agenda-preview chaos-agenda">
+                    <div className="preview-row">
+                      <div className="preview-slot filled"></div>
+                      <div className="preview-slot empty shake"></div>
+                      <div className="preview-slot filled"></div>
+                    </div>
+                    <div className="preview-row">
+                      <div className="preview-slot empty shake"></div>
+                      <div className="preview-slot filled"></div>
+                      <div className="preview-slot empty shake"></div>
+                    </div>
+                    <div className="preview-row">
+                      <div className="preview-slot filled"></div>
+                      <div className="preview-slot empty shake"></div>
+                      <div className="preview-slot filled"></div>
+                    </div>
+                    <div className="preview-row">
+                      <div className="preview-slot empty shake"></div>
+                      <div className="preview-slot empty shake"></div>
+                      <div className="preview-slot filled"></div>
+                    </div>
+                  </div>
+                  <div className="chaos-indicator">
+                    <div className="indicator-icon">⚠️</div>
+                    <div className="indicator-text">Instável</div>
+                  </div>
                 </div>
 
                 <ul className="ba-list">
@@ -46,11 +69,34 @@ const BeforeAfter = () => {
                   <h3>Cultura de Presença</h3>
                 </div>
 
+                {/* Visual de agenda cheia */}
                 <div className="ba-visual-stable">
-                  {/* Representação visual de estabilidade */}
-                  <div className="stable-bar"></div>
-                  <div className="stable-bar"></div>
-                  <div className="stable-bar"></div>
+                  <div className="agenda-preview stable-agenda">
+                    <div className="preview-row">
+                      <div className="preview-slot filled success"></div>
+                      <div className="preview-slot filled success"></div>
+                      <div className="preview-slot filled success"></div>
+                    </div>
+                    <div className="preview-row">
+                      <div className="preview-slot filled success"></div>
+                      <div className="preview-slot filled success"></div>
+                      <div className="preview-slot filled success"></div>
+                    </div>
+                    <div className="preview-row">
+                      <div className="preview-slot filled success"></div>
+                      <div className="preview-slot filled success"></div>
+                      <div className="preview-slot filled success"></div>
+                    </div>
+                    <div className="preview-row">
+                      <div className="preview-slot filled success"></div>
+                      <div className="preview-slot filled success"></div>
+                      <div className="preview-slot filled success"></div>
+                    </div>
+                  </div>
+                  <div className="stable-indicator">
+                    <div className="indicator-icon">✓</div>
+                    <div className="indicator-text">98% Ocupação</div>
+                  </div>
                 </div>
 
                 <ul className="ba-list">

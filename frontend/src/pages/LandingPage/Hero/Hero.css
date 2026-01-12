@@ -1,159 +1,441 @@
+/* ============================================
+   HERO SECTION - CLEAN & SMOOTH
+   ============================================ */
+
 .hero {
   position: relative;
   min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 120px; /* Espaço para o Header cápsula */
+  padding: 0;
   overflow: hidden;
   background: #ffffff;
 }
 
-/* Fundo com movimento Mesh Gradient */
-.mesh-gradient {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #ffffff;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.08) 0, transparent 50%), 
-    radial-gradient(at 100% 0%, rgba(37, 99, 235, 0.05) 0, transparent 50%), 
-    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.05) 0, transparent 50%), 
-    radial-gradient(at 0% 100%, rgba(79, 70, 229, 0.08) 0, transparent 50%);
-  filter: blur(60px);
-  z-index: 0;
-  animation: meshMove 20s ease infinite alternate;
-}
+/* ============================================
+   BACKGROUND
+   ============================================ */
 
-@keyframes meshMove {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
-}
-
-/* Noise para textura de site premium */
-.noise-overlay {
+.hero-background {
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.02;
-  pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
+
+.mesh-gradient {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(65, 105, 225, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(92, 139, 255, 0.04) 0%, transparent 50%);
+}
+
+/* ============================================
+   CONTENT
+   ============================================ */
 
 .hero-content {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
 }
 
-/* Tipografia */
+/* ============================================
+   HERO TEXT
+   ============================================ */
+
+.hero-text {
+  max-width: 580px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  background: #E8ECFF;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4169E1;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 28px;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  background: #4169E1;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
 .hero-title {
-  font-size: clamp(40px, 5vw, 72px);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -2px;
-  color: #0f172a;
+  font-size: clamp(44px, 6vw, 64px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #1A1A1A;
   margin-bottom: 24px;
 }
 
 .highlight {
-  background: linear-gradient(120deg, var(--primary) 0%, #818cf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #4169E1;
 }
 
 .hero-description {
-  font-size: 20px;
-  color: #475569;
-  max-width: 540px;
-  line-height: 1.6;
+  font-size: 18px;
+  color: #737373;
+  line-height: 1.7;
+  margin-bottom: 36px;
 }
 
-/* Imagem e Cards Flutuantes */
-.hero-image-container {
-  perspective: 1000px;
+.hero-description strong {
+  color: #1A1A1A;
+  font-weight: 700;
 }
 
-.hero-image-wrapper {
-  position: relative;
-  transform: rotateY(-5deg) rotateX(5deg);
-  transition: transform 0.5s ease;
+.text-highlight {
+  color: #4169E1;
+  font-weight: 600;
 }
 
-.hero-image-wrapper:hover {
-  transform: rotateY(0deg) rotateX(0deg);
+/* ============================================
+   CTA BUTTONS
+   ============================================ */
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
 }
 
-.main-dashboard-img {
-  width: 100%;
-  border-radius: 24px;
-  box-shadow: 
-    0 20px 50px rgba(0,0,0,0.1),
-    0 1px 2px rgba(0,0,0,0.05);
-  border: 1px solid rgba(255,255,255,0.8);
-}
-
-/* Glassmorphism Cards */
-.floating-card {
-  position: absolute;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+.btn-large {
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  gap: 15px;
-  z-index: 10;
+  gap: 10px;
 }
 
-.card-presence {
-  top: 15%;
-  left: -40px;
-  animation: float 4s ease-in-out infinite;
-}
-
-.card-revenue {
-  bottom: 20%;
-  right: -30px;
-  animation: float 4s ease-in-out infinite reverse;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-15px) rotate(2deg); }
-}
-
-.card-icon-wrapper {
-  width: 40px;
-  height: 40px;
-  background: var(--primary);
+.btn-primary {
+  background: linear-gradient(135deg, #4169E1 0%, #5C8BFF 100%);
   color: white;
-  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(65, 105, 225, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(65, 105, 225, 0.3);
+}
+
+.btn-arrow {
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.btn-primary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-outline {
+  background: white;
+  color: #4169E1;
+  border: 2px solid #E8ECFF;
+}
+
+.btn-outline:hover {
+  background: #E8ECFF;
+  border-color: #4169E1;
+}
+
+/* ============================================
+   TRUST BADGES
+   ============================================ */
+
+.hero-trust {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #737373;
+}
+
+.trust-icon {
+  width: 18px;
+  height: 18px;
+  background: #E8ECFF;
+  color: #4169E1;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* ============================================
+   CALENDAR VISUAL
+   ============================================ */
+
+.hero-visual {
+  position: relative;
+}
+
+.calendar-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  padding: 28px;
+  border: 1px solid #F5F5F5;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #F5F5F5;
+}
+
+.calendar-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1A1A1A;
+}
+
+.calendar-date {
+  font-size: 14px;
+  color: #737373;
+  font-weight: 600;
+}
+
+.calendar-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #FAFAFA;
+  border: 2px solid #F0F0F0;
+  transition: all 0.3s ease;
+}
+
+.slot-filled {
+  background: linear-gradient(135deg, #E8ECFF 0%, #F5F8FF 100%);
+  border-color: #4169E1;
+}
+
+.slot-time {
+  font-size: 14px;
+  font-weight: 700;
+  color: #4169E1;
+  min-width: 45px;
+}
+
+.slot-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slot-check {
+  width: 24px;
+  height: 24px;
+  background: #4169E1;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.slot-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.slot-empty-text {
+  font-size: 13px;
+  color: #A3A3A3;
+}
+
+/* ============================================
+   FLOATING CARDS
+   ============================================ */
+
+.float-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  animation: cardFloat 4s ease-in-out infinite;
+}
+
+.card-1 {
+  top: 8%;
+  left: -50px;
+}
+
+.card-2 {
+  top: 50%;
+  right: -60px;
+  animation-delay: 1s;
+}
+
+.card-3 {
+  bottom: 12%;
+  left: -40px;
+  animation-delay: 2s;
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  background: #FCD34D;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.card-icon.success {
+  background: linear-gradient(135deg, #4169E1, #5C8BFF);
+  color: white;
+  font-weight: 800;
+}
+
+.card-icon.revenue {
+  background: linear-gradient(135deg, #10B981, #34D399);
 }
 
 .card-title {
   font-size: 14px;
   font-weight: 700;
-  color: #0f172a;
+  color: #1A1A1A;
 }
 
-.card-subtitle {
+.card-sub {
   font-size: 12px;
-  color: #64748b;
+  color: #737373;
 }
 
-/* Botões Arredondados estilo Capsule */
-.btn-large {
-  padding: 18px 36px;
-  border-radius: 100px;
-  font-size: 16px;
-  gap: 12px;
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 968px) {
+  .hero {
+    min-height: auto;
+    max-height: none;
+    padding: 100px 0 60px;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .hero-title {
+    font-size: 40px;
+  }
+
+  .hero-description {
+    font-size: 17px;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+  }
+
+  .btn-large {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .float-card {
+    position: relative;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    margin: 12px 0;
+    animation: none;
+  }
+
+  .calendar-card {
+    padding: 20px;
+  }
+
+  .calendar-slots {
+    gap: 8px;
+  }
+
+  .slot {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-badge {
+    font-size: 11px;
+    padding: 8px 18px;
+  }
+
+  .calendar-title {
+    font-size: 18px;
+  }
+
+  .trust-item {
+    font-size: 13px;
+  }
 }

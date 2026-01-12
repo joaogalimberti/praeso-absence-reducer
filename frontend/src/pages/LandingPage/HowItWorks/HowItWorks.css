@@ -1,149 +1,359 @@
+/* ============================================
+   HOW IT WORKS - ALTERNATING & FIXED
+   ============================================ */
+
 .how-section {
   padding: 120px 0;
-  background: #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, #FAFAFA 50%, #ffffff 100%);
   position: relative;
   overflow: hidden;
 }
 
-.steps-container {
-  position: relative;
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  gap: 120px;
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 100px;
 }
 
-/* Linha central que conecta os passos */
+.section-tag {
+  display: inline-block;
+  padding: 8px 24px;
+  background: #E8ECFF;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4169E1;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 800;
+  color: #1A1A1A;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #4169E1;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #737373;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   STEPS CONTAINER
+   ============================================ */
+
+.steps-container {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* Linha central - ATRÁS dos números */
 .steps-path {
   position: absolute;
   left: 50%;
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, transparent, #e2e8f0 10%, #e2e8f0 90%, transparent);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #E5E5E5 10%,
+    #E5E5E5 90%,
+    transparent 100%
+  );
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 1; /* Atrás de tudo */
 }
+
+/* ============================================
+   STEP ITEM
+   ============================================ */
 
 .step-item {
   display: grid;
-  grid-template-columns: 1fr 120px 1fr; /* Lado A | Marcador | Lado B */
+  grid-template-columns: 1fr 120px 1fr;
+  gap: 40px;
   align-items: center;
+  position: relative;
+  z-index: 2; /* Na frente da linha */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.step-item.step-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delay para cada step */
+.step-item:nth-child(1) { transition-delay: 0s; }
+.step-item:nth-child(2) { transition-delay: 0.15s; }
+.step-item:nth-child(3) { transition-delay: 0.3s; }
+.step-item:nth-child(4) { transition-delay: 0.45s; }
+
+/* ============================================
+   STEP SIDES (Esquerda e Direita)
+   ============================================ */
+
+.step-side {
+  display: flex;
   position: relative;
   z-index: 2;
 }
 
-.step-reverse {
-  direction: ltr; /* Garante que o texto não inverta */
+.step-left {
+  justify-content: flex-end;
 }
 
-/* Marcador central (O Círculo) */
+.step-right {
+  justify-content: flex-start;
+}
+
+/* ============================================
+   STEP NUMBER (Centro) - NA FRENTE
+   ============================================ */
+
 .step-marker {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 10; /* SEMPRE na frente da linha */
 }
 
-.step-dot {
+.step-number {
   width: 56px;
   height: 56px;
-  background: white;
-  border: 2px solid var(--primary);
+  background: #ffffff;
+  border: 2px solid #4169E1;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 20px rgba(79, 70, 229, 0.15);
-  position: relative;
-  background: white;
-  z-index: 3;
-}
-
-.step-number-text {
-  font-weight: 800;
-  color: var(--primary);
-  font-size: 14px;
-}
-
-/* Conteúdo do Texto */
-.step-info {
-  padding: 0 40px;
-}
-
-.step-title {
-  font-size: 28px;
-  font-weight: 800;
-  color: #0f172a;
-  margin-bottom: 15px;
-}
-
-.step-description {
   font-size: 16px;
-  color: #64748b;
-  line-height: 1.6;
+  font-weight: 800;
+  color: #4169E1;
+  box-shadow: 0 4px 16px rgba(65, 105, 225, 0.12);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
 }
 
-/* Visual (Imagens e Cards) */
+.step-item:hover .step-number {
+  background: #4169E1;
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(65, 105, 225, 0.25);
+}
+
+/* ============================================
+   STEP VISUAL (Imagem)
+   ============================================ */
+
 .step-visual {
   display: flex;
   justify-content: center;
-  padding: 0 40px;
+  width: 100%;
 }
 
 .step-image-card {
   position: relative;
   width: 100%;
-  max-width: 440px;
-  border-radius: 24px;
+  max-width: 420px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-  transition: transform 0.5s ease;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  background: #F5F5F5;
 }
 
 .step-image-card img {
   width: 100%;
+  height: auto;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
 }
 
-.step-image-card:hover {
-  transform: scale(1.02) translateY(-5px);
+.step-item:hover .step-image-card {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(65, 105, 225, 0.15);
 }
 
-.step-image-card:hover img {
+.step-item:hover .step-image-card img {
   transform: scale(1.05);
 }
 
-/* Badge de Glassmorphism sobre a imagem */
-.step-glass-badge {
+.step-badge {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 16px;
+  right: 16px;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   border-radius: 100px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  color: var(--primary);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #4169E1;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-/* Alternância de Lados */
-.step-item:nth-child(even) .step-visual { order: 3; }
-.step-item:nth-child(even) .step-info { order: 1; text-align: right; }
-.step-item:nth-child(odd) .step-info { order: 3; }
+.step-item:hover .step-badge {
+  background: #4169E1;
+  color: #ffffff;
+}
 
-/* Responsividade */
+/* ============================================
+   STEP CONTENT (Texto)
+   ============================================ */
+
+.step-content {
+  max-width: 450px;
+}
+
+/* Alinhamento do texto */
+.step-left .step-content {
+  text-align: right;
+}
+
+.step-right .step-content {
+  text-align: left;
+}
+
+.step-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1A1A1A;
+  margin-bottom: 12px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.step-item:hover .step-title {
+  color: #4169E1;
+}
+
+.step-description {
+  font-size: 16px;
+  color: #737373;
+  line-height: 1.7;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 968px) {
-  .steps-path { left: 30px; transform: none; }
-  .step-item {
-    grid-template-columns: 60px 1fr;
-    gap: 20px;
+  .how-section {
+    padding: 80px 0;
   }
-  .step-marker { justify-content: flex-start; }
-  .step-info, .step-visual { order: 2 !important; text-align: left !important; padding: 0; }
-  .step-item:nth-child(even) .step-visual { order: 2; }
-  .step-visual { margin-top: 20px; }
+
+  .section-header {
+    margin-bottom: 60px;
+  }
+
+  .steps-container {
+    gap: 60px;
+  }
+
+  /* Timeline vai para a esquerda */
+  .steps-path {
+    left: 28px;
+    transform: none;
+  }
+
+  /* Layout empilhado em mobile */
+  .step-item {
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+  }
+
+  .step-marker {
+    justify-content: flex-start;
+    align-self: flex-start;
+    padding-top: 8px;
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    font-size: 14px;
+  }
+
+  /* Remove alternância em mobile */
+  .step-side {
+    grid-column: 2;
+  }
+
+  .step-left,
+  .step-right {
+    justify-content: flex-start;
+  }
+
+  .step-left .step-content,
+  .step-right .step-content {
+    text-align: left;
+  }
+
+  /* Empilha visual e content */
+  .step-visual {
+    margin-top: 20px;
+  }
+
+  .step-image-card {
+    max-width: 100%;
+  }
+
+  .step-title {
+    font-size: 24px;
+  }
+
+  .step-description {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 32px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+  }
+
+  .step-title {
+    font-size: 22px;
+  }
+
+  .step-number {
+    width: 44px;
+    height: 44px;
+    font-size: 13px;
+  }
+
+  .steps-path {
+    left: 22px;
+  }
 }
