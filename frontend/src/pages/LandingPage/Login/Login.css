@@ -1,84 +1,354 @@
-/* Layout da Página de Login */
+/* ============================================
+   LOGIN PAGE - MINIMALIST WITH BRAND COLORS
+   ============================================ */
+
 .login-page-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #f8fafc;
   padding: 20px;
   position: relative;
-}
-
-.back-button {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: none;
-  border: none;
-  color: #4a5568;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: color 0.2s;
-}
-
-.back-button:hover {
-  color: #2d3748;
-}
-
-.login-content {
-  display: flex;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  max-width: 1000px;
-  width: 100%;
   overflow: hidden;
 }
 
-.login-branding {
-  flex: 1;
-  background-color: #4f46e5; /* Use a cor principal da sua marca */
-  padding: 60px;
+/* ============================================
+   BACKGROUND - APENAS 2 FORMAS SUTIS
+   ============================================ */
+
+.login-page-container .login-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.login-page-container .shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: shapeFloat 20s ease-in-out infinite;
+}
+
+.login-page-container .shape-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.06), transparent 70%);
+  top: -200px;
+  right: -200px;
+}
+
+.login-page-container .shape-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.04), transparent 70%);
+  bottom: -150px;
+  left: -150px;
+  animation-delay: 10s;
+}
+
+@keyframes shapeFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+}
+
+/* ============================================
+   BACK BUTTON
+   ============================================ */
+
+.login-page-container .back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', sans-serif;
+}
+
+.login-page-container .back-button:hover {
+  background: #2563eb;
   color: white;
+  border-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   LOGIN CONTENT
+   ============================================ */
+
+.login-page-container .login-content {
+  display: flex;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-width: 1100px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  animation: contentFadeIn 0.6s ease;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   BRANDING (Lado Esquerdo)
+   ============================================ */
+
+.login-page-container .login-branding {
+  flex: 1;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+  padding: 60px;
+  color: #0f172a;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.login-branding h1 {
-  font-size: 2.5rem;
-  margin: 20px 0;
+.login-page-container .login-branding::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(37, 99, 235, 0.08), transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.05), transparent 60%);
+  animation: gradientPulse 8s ease-in-out infinite;
+}
+
+@keyframes gradientPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.login-page-container .branding-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.login-page-container .logo {
+  margin-bottom: 40px;
+}
+
+.login-page-container .logo-text {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #2563eb;
+  font-family: 'Outfit', sans-serif;
+}
+
+.login-page-container .login-branding h1 {
+  font-size: 44px;
+  font-weight: 800;
   line-height: 1.2;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  font-family: 'Outfit', sans-serif;
 }
 
-.login-branding p {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  line-height: 1.6;
+.login-page-container .highlight-text {
+  color: #3b82f6;
+  position: relative;
 }
 
-.clerk-form-wrapper {
+.login-page-container .highlight-text::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #3b82f6;
+  border-radius: 2px;
+  animation: underlineGrow 1.5s ease-in-out infinite;
+}
+
+@keyframes underlineGrow {
+  0%, 100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleX(0.8);
+    opacity: 0.6;
+  }
+}
+
+.login-page-container .login-branding p {
+  font-size: 17px;
+  opacity: 0.8;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 40px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============================================
+   STATS - MINIMALISTA
+   ============================================ */
+
+.login-page-container .stats-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.login-page-container .stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.login-page-container .stat-number {
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 6px;
+  font-family: 'Outfit', sans-serif;
+  color: #2563eb;
+}
+
+.login-page-container .stat-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: #475569;
+}
+
+.login-page-container .stat-divider {
+  width: 1px;
+  height: 40px;
+  background: #e2e8f0;
+}
+
+/* ============================================
+   CLERK FORM (Lado Direito) - SEM MODIFICAÇÕES
+   ============================================ */
+
+.login-page-container .clerk-form-wrapper {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 60px;
+  background: white;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .login-content {
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 968px) {
+  .login-page-container .login-content {
     flex-direction: column;
+    max-width: 500px;
   }
-  .login-branding {
-    padding: 40px;
+
+  .login-page-container .login-branding {
+    padding: 50px 40px;
     text-align: center;
   }
-  .login-branding .logo {
+
+  .login-page-container .logo {
+    display: flex;
     justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .login-page-container .login-branding h1 {
+    font-size: 36px;
+  }
+
+  .login-page-container .login-branding p {
+    font-size: 16px;
+  }
+
+  .login-page-container .stats-container {
+    gap: 16px;
+  }
+
+  .login-page-container .clerk-form-wrapper {
+    padding: 40px;
+  }
+
+  .login-page-container .back-button {
+    top: 20px;
+    left: 20px;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 640px) {
+  .login-page-container {
+    padding: 10px;
+  }
+
+  .login-page-container .login-branding {
+    padding: 40px 30px;
+  }
+
+  .login-page-container .logo-text {
+    font-size: 28px;
+  }
+
+  .login-page-container .login-branding h1 {
+    font-size: 28px;
+  }
+
+  .login-page-container .login-branding p {
+    font-size: 15px;
+  }
+
+  .login-page-container .clerk-form-wrapper {
+    padding: 30px 20px;
+  }
+
+  .login-page-container .stats-container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .login-page-container .stat-divider {
+    width: 100%;
+    height: 1px;
   }
 }
