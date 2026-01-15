@@ -9,7 +9,6 @@ import HowItWorks from './HowItWorks/HowItWorks';
 import DashboardPreview from './DashboardPreview/DashboardPreview';
 import Automation from './Automation/Automation';
 import Testimonials from './Testimonials/Testimonials';
-import CTA from './CTA/CTA';
 import Footer from './Footer/Footer';
 
 // Importação dos estilos de cada seção
@@ -23,7 +22,6 @@ import './HowItWorks/HowItWorks.css';
 import './DashboardPreview/DashboardPreview.css';
 import './Automation/Automation.css';
 import './Testimonials/Testimonials.css';
-import './CTA/CTA.css';
 import './Footer/Footer.css';
 
 const LandingPage = () => {
@@ -57,8 +55,6 @@ const LandingPage = () => {
         {/* Prova Social (Depoimentos) */}
         <Testimonials />
 
-        {/* Chamada para Ação Final */}
-        <CTA />
       </main>
 
       <Footer />
